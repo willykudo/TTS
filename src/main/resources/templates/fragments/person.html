@@ -1,0 +1,49 @@
+<div th:fragment="insert-form">
+        <input type="button" value="Input and Update Data" name="Input and Update Data" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Form Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                <form th:object="${person}" th:action="@{save}" method="POST">
+                    <table border="0">
+                        <tr>
+                            <td> Id : </td>
+                            <td> <input type="text" th:field="*{id}" /> </td>
+                        </tr>
+                        <tr>
+                            <td> Name : </td>
+                            <td> <input type="text" th:field="*{name}" /> </td>
+                        </tr>
+                        <tr>
+                            <td> Age : </td>
+                            <td> <input type="number" th:field="*{age}" /> </td>
+                        </tr>
+                        <tr>
+                            <td> Gender : </td>
+                            <td> 
+                                <!--<input type="text" th:field="*{gender}" /> -->
+                                <select name="gender-list" th:field="*{gender}">
+                                    <option value="MALE">Laki-Laki</option>
+                                    <option value="FEMALE">Perempuan</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                  
+                  <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" name="Save" class="btn btn-primary" onclick="saveNotification()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
